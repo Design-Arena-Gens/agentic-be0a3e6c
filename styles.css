@@ -1,0 +1,224 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  background: radial-gradient(circle at top, #1f2937 0%, #0f172a 55%, #020617 100%);
+  color: #e2e8f0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header,
+.app-footer {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.app-header p {
+  margin: 0.5rem 0 0;
+  color: #94a3b8;
+  font-size: 1rem;
+}
+
+.app-footer p {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+.app-container {
+  width: min(1100px, 95vw);
+  margin: 0 auto;
+  flex: 1;
+  display: grid;
+  gap: 1.5rem;
+  padding-bottom: 2rem;
+}
+
+.panel {
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(148, 163, 184, 0.08);
+  border-radius: 1.25rem;
+  padding: clamp(1.5rem, 2vw, 2rem);
+  box-shadow: 0 25px 40px rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(12px);
+}
+
+.upload-panel .controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  margin-top: 1.25rem;
+}
+
+.controls label {
+  font-size: 0.95rem;
+  color: #cbd5f5;
+}
+
+select,
+button {
+  border-radius: 999px;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: inherit;
+}
+
+select {
+  background: rgba(15, 23, 42, 0.8);
+  color: #e2e8f0;
+  border: 1px solid rgba(148, 163, 184, 0.24);
+  appearance: none;
+  cursor: pointer;
+}
+
+button {
+  cursor: pointer;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: #f8fafc;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+  box-shadow: 0 12px 30px rgba(99, 102, 241, 0.25);
+}
+
+button:hover:not(:disabled) {
+  transform: translateY(-1px) scale(1.01);
+  filter: brightness(1.05);
+}
+
+button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.dropzone {
+  position: relative;
+  border: 2px dashed rgba(129, 140, 248, 0.4);
+  border-radius: 1.25rem;
+  padding: 2.5rem 1.25rem;
+  text-align: center;
+  background: rgba(30, 41, 59, 0.55);
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.dropzone.dragover {
+  border-color: rgba(129, 140, 248, 0.9);
+  transform: scale(1.01);
+}
+
+.dropzone input[type="file"] {
+  opacity: 0;
+  position: absolute;
+  inset: 0;
+  cursor: pointer;
+}
+
+.dropzone-content {
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: #cbd5f5;
+}
+
+.drop-icon {
+  font-size: 2.4rem;
+  filter: drop-shadow(0 12px 24px rgba(129, 140, 248, 0.35));
+}
+
+.status {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  color: #a5b4fc;
+  min-height: 1.5rem;
+}
+
+.progress-wrapper {
+  margin-top: 0.75rem;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.25);
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(135deg, #60a5fa, #818cf8);
+  transition: width 0.2s ease;
+}
+
+.preview-container {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.preview {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.preview h2 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #cbd5f5;
+  letter-spacing: 0.02em;
+}
+
+.preview-inner {
+  position: relative;
+  border-radius: 1rem;
+  background: rgba(15, 23, 42, 0.65);
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  padding: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 240px;
+  overflow: hidden;
+}
+
+#originalPreview,
+#resultCanvas {
+  max-width: 100%;
+  max-height: 320px;
+  object-fit: contain;
+  border-radius: 0.5rem;
+  background: rgba(2, 6, 23, 0.5);
+}
+
+.meta {
+  font-size: 0.85rem;
+  color: #94a3b8;
+}
+
+@media (max-width: 720px) {
+  .upload-panel .controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  select,
+  button {
+    width: 100%;
+  }
+}

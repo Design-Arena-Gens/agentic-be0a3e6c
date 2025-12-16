@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PureCanvas Upscaler</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="app-header">
+    <h1>PureCanvas Upscaler</h1>
+    <p>Offline image upscaling and enhancement powered by HTML5 Canvas.</p>
+  </header>
+  <main class="app-container">
+    <section class="panel upload-panel">
+      <div class="dropzone" id="dropzone">
+        <input type="file" accept="image/*" id="fileInput" aria-label="Upload image">
+        <div class="dropzone-content">
+          <span class="drop-icon">⬆</span>
+          <p>Drop an image or click to browse</p>
+          <small>Max recommended size: 4000×4000</small>
+        </div>
+      </div>
+      <div class="controls">
+        <label for="scaleFactor">Upscale factor</label>
+        <select id="scaleFactor">
+          <option value="2">2×</option>
+          <option value="4">4×</option>
+        </select>
+        <button id="upscaleBtn" disabled>Upscale &amp; Enhance</button>
+        <button id="downloadBtn" disabled>Download Result</button>
+      </div>
+      <div class="status" id="status">Upload an image to begin.</div>
+      <div class="progress-wrapper" id="progressWrapper" hidden>
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+    </section>
+    <section class="panel preview-panel">
+      <div class="preview-container">
+        <div class="preview">
+          <h2>Original</h2>
+          <div class="preview-inner">
+            <img id="originalPreview" alt="Original preview">
+          </div>
+          <div class="meta">
+            <span id="originalMeta">—</span>
+          </div>
+        </div>
+        <div class="preview">
+          <h2>Upscaled</h2>
+          <div class="preview-inner">
+            <canvas id="resultCanvas"></canvas>
+          </div>
+          <div class="meta">
+            <span id="resultMeta">—</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="app-footer">
+    <p>Everything runs locally in your browser. No uploads. No tracking.</p>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>
